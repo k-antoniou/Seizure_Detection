@@ -18,7 +18,7 @@ from ClassificationModels import CompleteNN, CompleteCNN, CompleteRNN, CompleteL
 
 # ### Feature Extraction
 
-def featureExtraction (df, oversampling_neighbors):
+def featureExtraction (df):
     #Normalization
     removeNonNumericValues(df)
     ft = featureNormalization(df)
@@ -42,9 +42,9 @@ def trainTestData (features, test_ratio, k_fold, perfInd):
 
 # ### Experiment
 
-def experiment (df, test_ratio, oversampling_neighbors, k_fold, epochs, batch, dropout_percentage, metric, perfInd):
+def experiment (df, test_ratio, k_fold, epochs, batch, dropout_percentage, metric, perfInd):
     #Preprocessing
-    df = featureExtraction(df, oversampling_neighbors)
+    df = featureExtraction(df)
     
     #Feature Seletion
     print('Feature Selection')
@@ -54,13 +54,7 @@ def experiment (df, test_ratio, oversampling_neighbors, k_fold, epochs, batch, d
     df_12, cols_12 =  featureSelection(df, 12)
     
     #Train test split
-    X_train, X_test, y_train, y_test, results, kf = trainTestData (df, 0.3, 5, perfInd)
-
-    #Parameter set-up
-    batch = 10
-    epochs = 100
-    dropout_percentage = 0.1
-    metric = 'accuracy'
+    X_train, X_test, y_train, y_test, results, kf = trainTestData (df,test_ratio, k_fold, perfInd)
     
     #Set-up for rnns
     rnn_units = 64
