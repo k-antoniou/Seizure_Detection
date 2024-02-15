@@ -40,7 +40,7 @@ def computeTimeDomainFeatures (x):
 # ### Feature computation
 
 #Compute features based on a 2s window
-def featureExtractionFull (df, sample_rate, step):
+def featureExtraction (df, sample_rate, step):
     print('Feature Extraction')
     ft = pd.DataFrame()
     c = 0
