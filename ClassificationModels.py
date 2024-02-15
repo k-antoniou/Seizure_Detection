@@ -20,7 +20,6 @@ from collections import Counter
 
 from ClassificationPerformanceIndexes import classificationPerformanceIndexes, printClassificationPerformanceIndexes
 
-
 # ## Edge Impulse
 
 #Set up Edge Impulse for the Arduino Board
