@@ -54,7 +54,13 @@ def experiment (df, test_ratio, oversampling_neighbors, k_fold, epochs, batch, d
     df_12, cols_12 =  featureSelection(df, 12)
     
     #Train test split
-    X_train, X_test, y_train, y_test, results, kf = trainTestData (df, 0.3, k_fold, perfInd)
+    X_train, X_test, y_train, y_test, results, kf = trainTestData (df, 0.3, 5, perfInd)
+
+    #Parameter set-up
+    batch = 10
+    epochs = 100
+    dropout_percentage = 0.1
+    metric = 'accuracy'
     
     #Set-up for rnns
     rnn_units = 64
